@@ -12,13 +12,6 @@
     <!-- CSS customize -->
     <link rel="stylesheet" href="./css/style.css">
 
-    <style>
-        .row {
-            padding: 0;
-            margin: 0;
-        }
-    </style>
-
 </head>
 
 <body>
