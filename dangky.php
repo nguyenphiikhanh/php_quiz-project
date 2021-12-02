@@ -73,6 +73,7 @@ if (isset($_POST['submit'])) {
         <script>
             document.getElementById("fail").style.display = "block";
             document.getElementById("success").style.display = "none";
+            document.title = "Đăng ký thành viên"
         </script>
     <?php } else {
         $query = "INSERT INTO users VALUES(NULL,'$_POST[username]','$_POST[fullname]','$_POST[email]','$password',DEFAULT)";
@@ -81,6 +82,7 @@ if (isset($_POST['submit'])) {
         <script>
             document.getElementById("fail").style.display = "none";
             document.getElementById("success").style.display = "block";
+            document.title = "Đăng ký thành viên"
         </script>
 <?php
         header("refresh:3;url=dangnhap.php");
@@ -92,5 +94,6 @@ if (isset($_POST['submit'])) {
 <script type="text/javascript">
     document.title = "Đăng ký thành viên"
 </script>
+
 
 <?php include_once('./layout/foot.php'); ?>
