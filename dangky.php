@@ -83,11 +83,12 @@ if (isset($_POST['submit'])) {
             document.getElementById("fail").style.display = "none";
             document.getElementById("success").style.display = "block";
             document.title = "Đăng ký thành viên"
+            setTimeout("location.href = 'dangnhap.php';",2000);
         </script>
 <?php
-        header("refresh:3;url=dangnhap.php");
     }
     $link->close_connect();
+    unset($_POST);
 }
 ?>
 
