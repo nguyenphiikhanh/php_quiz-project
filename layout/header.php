@@ -13,7 +13,7 @@
      </li>
 
      <li class="nav-item bg-danger">
-       <a class="nav-link font-weight-bold text-uppercase" href="#">Admin C-panel</a>
+       <a class="nav-link font-weight-bold text-uppercase" href="./admin/index.php">Admin C-panel</a>
      </li>
    </ul>
 

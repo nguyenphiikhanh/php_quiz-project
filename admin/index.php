@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custome_style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -36,7 +37,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
+                        <h1>Thông tin chung</h1>
                     </div>
                 </div>
             </div>
@@ -48,9 +49,104 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
 
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="stat-widget-one">
+                                            <div class="stat-icon dib"><i class="ti-user text-success border-success"></i></div>
+                                            <div class="stat-content dib">
+                                                <div class="stat-text">Tổng số thành viên</div>
+                                                <div class="stat-digit">1,012</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="stat-widget-one">
+                                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                                            <div class="stat-content dib">
+                                                <div class="stat-text">Thành viên mới</div>
+                                                <div class="stat-digit">961</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="stat-widget-one">
+                                            <div class="stat-icon dib"><i class="ti-agenda text-warning border-warning"></i></div>
+                                            <div class="stat-content dib">
+                                                <div class="stat-text">Khóa học</div>
+                                                <div class="stat-digit">770</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="stat-widget-one">
+                                            <div class="stat-icon dib"><i class="ti-help-alt text-danger border-danger"></i></div>
+                                            <div class="stat-content dib">
+                                                <div class="stat-text">Tổng số câu hỏi</div>
+                                                <div class="stat-digit">2,781</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong class="card-title">Kết quả cao</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Khóa học</th>
+                                                    <th scope="col">Thành viên</th>
+                                                    <th scope="col">Kết quả</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>Mark</td>
+                                                    <td>Otto</td>
+                                                    <td>@mdo</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>@fat</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>Larry</td>
+                                                    <td>the Bird</td>
+                                                    <td>@twitter</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
