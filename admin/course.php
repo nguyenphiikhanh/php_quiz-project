@@ -96,7 +96,7 @@
                                                 <tbody>
                                                     <?php include_once("../config/connection.php");
                                                     $link = new Connection;
-                                                    $query = "SELECT * FROM khoa_hoc";
+                                                    $query = "SELECT * FROM khoa_hoc ORDER BY id DESC";
                                                     $res = mysqli_query($link->link, $query);
                                                     while ($row = $res->fetch_assoc()) { ?>
                                                         <tr>
@@ -105,7 +105,7 @@
                                                                 <a href="./course-edit.php?course=<?php echo $row['id']; ?>" class="btn btn-warning btn-md test">
                                                                     <i class="ti-pencil-alt"></i> Sửa
                                                                 </a>
-                                                                <a class="btn btn-outline-danger btn-md">
+                                                                <a href="./actions/course-delete.php?course=<?php echo $row['id']; ?>" onclick="delete_course(event)" class="btn btn-outline-danger btn-md">
                                                                     <i class="ti-trash"></i> Xóa
                                                                 </a>
                                                             </td>
@@ -139,6 +139,8 @@
 
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
+
+
     <!-- sweetAlert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -165,6 +167,33 @@
     <?php }
         $link->close_connect();
     } ?>
+
+
+    <!-- delete by sweetAlert -->
+    <script>
+        function delete_course(event) {
+            event.preventDefault();
+            let link_redirect = event.currentTarget.getAttribute('href');
+            // alert('clicked: '+link_redirect)
+            swal({
+                    title: "Bạn có chắc chắn muốn xóa khóa học này?",
+                    text: "Chú ý: hành động không thể hoàn tác!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa thành công", {
+                            icon: "success",
+                        }).then((value) => {
+                            window.location.href = link_redirect;
+                        });
+                    }
+                });
+        }
+    </script>
+
 </body>
 
 </html>
