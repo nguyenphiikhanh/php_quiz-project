@@ -37,7 +37,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Thông tin chung</h1>
+                        <h1>Quản lí khóa học</h1>
                     </div>
                 </div>
             </div>
@@ -51,10 +51,10 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="col-lg-6 mt-2">
+                                <div class="col-lg-12 mt-2">
                                     <div class="card">
                                         <div class="card-header"><strong>Thêm khóa học</strong></div>
-                                        <form action="" enctype="multipart/form-data">
+                                        <form action="" method="post" enctype="multipart/form-data">
                                             <div class="card-body card-block">
                                                 <div class="form-group">
                                                     <label class=" form-control-label">Tên khóa học</label>
@@ -62,21 +62,16 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="form-control-label">Hình ảnh mô tả</label>
-                                                    <input type="file" required name="image" class="form-control">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class=" form-control-label">Mô tả khóa học</label>
+                                                    <label class=" form-control-label">Mô tả</label>
                                                     <textarea name="description" placeholder="Mô tả khóa học..." class="form-control" rows="6"></textarea>
                                                 </div>
 
                                                 <div class="form-group row justify-content-center">
-                                                    <button type="submit" name="add" class="btn btn-primary btn-lg">
-                                                        <i class="fa fa-dot-circle-o"></i> Submit
+                                                    <button type="submit" name="add" class="btn btn-info btn-lg">
+                                                        <i class="ti-check"></i> Thêm
                                                     </button>
                                                     <button type="reset" class="btn btn-outline-secondary btn-lg ml-2">
-                                                        <i class="fa fa-ban"></i> Reset
+                                                        <i class="ti-back-left"></i> Nhập lại
                                                     </button>
                                                 </div>
 
@@ -85,60 +80,38 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6 mt-2">
+                                <div class="col-lg-12 mt-2">
                                     <div class="card">
                                         <div class="card-header">
                                             <strong class="card-title">Khóa học trên hệ thống</strong>
                                         </div>
                                         <div class="card-body">
-                                            <table class="table">
+                                            <table class="table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">STT</th>
-                                                        <th scope="col">Khóa học</th>
-                                                        <th scope="col">Tùy chọn</th>
+                                                        <th>Khóa học</th>
+                                                        <th>Tùy chọn</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>
-                                                            <a class="btn btn-warning btn-sm">
-                                                                <i class="ti-pencil-alt"></i>
-                                                            </a>
-                                                            <a class="btn btn-outline-danger btn-sm ml-2">
-                                                                <i class="ti-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>
-                                                            <a class="btn btn-warning btn-sm">
-                                                                <i class="ti-pencil-alt"></i>
-                                                            </a>
-                                                            <a class="btn btn-outline-danger btn-sm ml-2">
-                                                                <i class="ti-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>MarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMarkMark</td>
-                                                        <td>
-                                                            <a class="btn btn-warning btn-sm">
-                                                                <i class="ti-pencil-alt"></i>
-                                                            </a>
-                                                            <a class="btn btn-outline-danger btn-sm ml-2">
-                                                                <i class="ti-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-
+                                                    <?php include_once("../config/connection.php");
+                                                    $link = new Connection;
+                                                    $query = "SELECT * FROM khoa_hoc";
+                                                    $res = mysqli_query($link->link, $query);
+                                                    while ($row = $res->fetch_assoc()) { ?>
+                                                        <tr>
+                                                            <td><?php echo $row['name']; ?></td>
+                                                            <td>
+                                                                <a href="./course-edit.php?course=<?php echo $row['id']; ?>" class="btn btn-warning btn-md test">
+                                                                    <i class="ti-pencil-alt"></i> Sửa
+                                                                </a>
+                                                                <a class="btn btn-outline-danger btn-md">
+                                                                    <i class="ti-trash"></i> Xóa
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -154,6 +127,10 @@
     </div>
 
 
+
+
+
+
     <script src="vendors/jquery/dist/jquery.min.js"></script>
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 
@@ -161,9 +138,33 @@
     <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- sweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="assets/js/main.js"></script>
 
+    <?php if (isset($_POST['add'])) {
+        include_once("../config/connection.php");
+        $link = new Connection;
+        $query = "INSERT INTO khoa_hoc VALUES(NULL,'$_POST[name]','$_POST[description]')";
+        $res = mysqli_query($link->link, $query);
+        if ($res) {
+    ?>
+            <script>
+                swal({
+                    title: "Thành công!",
+                    text: "Đã thêm khóa học mới!",
+                    icon: "success",
+                    button: "Đóng",
+                }).then((value) => {
+                    window.location.href = window.location.href;
+                })
+            </script>
 
+    <?php }
+        $link->close_connect();
+    } ?>
 </body>
 
 </html>

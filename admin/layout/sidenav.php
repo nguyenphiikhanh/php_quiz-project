@@ -18,7 +18,7 @@
                     </li>
 
                     <li>
-                        <a href="course-add.php"> <i class="menu-icon fa fa-book"></i>Thêm khóa học </a>
+                        <a href="course.php"> <i class="menu-icon fa fa-book"></i>Quản lí khóa học </a>
                     </li>
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-question-circle"></i>Thêm câu hỏi </a>
