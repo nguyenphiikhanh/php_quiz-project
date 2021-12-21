@@ -82,10 +82,9 @@
         if (isset($_POST['submit'])) {
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-            $link = new Connection;
             $count = 0;
             $query = "SELECT * FROM users WHERE username = '$_POST[username]'";
-            $res = mysqli_query($link->link, $query);
+            $res = mysqli_query($connect, $query);
             $count = mysqli_num_rows($res);
             if ($count > 0) { ?>
                 <script>
@@ -95,17 +94,16 @@
                 </script>
             <?php } else {
                 $query = "INSERT INTO users VALUES(NULL,'$_POST[username]','$_POST[fullname]','$_POST[email]','$password',DEFAULT)";
-                mysqli_query($link->link, $query);
+                mysqli_query($connect, $query);
             ?>
                 <script>
                     document.getElementById("fail").style.display = "none";
                     document.getElementById("success").style.display = "block";
                     document.title = "Đăng ký thành viên"
-                    setTimeout("location.href = 'dangnhap.php';", 2000);
+                    setTimeout("location.href = 'login.php';", 2000);
                 </script>
         <?php
             }
-            $link->close_connect();
         }
         ?>
 

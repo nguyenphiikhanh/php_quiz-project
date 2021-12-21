@@ -79,10 +79,9 @@
         if (isset($_POST['login'])) {
             $password = $_POST['password'];
 
-            $link = new Connection;
             $count = 0;
             $query = "SELECT * FROM users WHERE username ='$_POST[username]' LIMIT 1";
-            $res = mysqli_query($link->link, $query);
+            $res = mysqli_query($connect, $query);
             $count = mysqli_num_rows($res);
             $res = $res->fetch_assoc();
 
@@ -103,7 +102,7 @@
             } else {
             ?>
                 <script>
-                    window.location = "demo.php";
+                    window.location = "index.php";
                 </script>
         <?php
             }
