@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Thêm khóa học</title>
+    <title>Quản lí khóa học</title>
     <meta name="description" content="Admin C-panel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,9 +94,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php include_once("../config/connection.php");
-                                                    $link = new Connection;
+                                                    <?php include_once("./config/connection.php");
                                                     $query = "SELECT * FROM khoa_hoc ORDER BY id DESC";
+                                                    $link = new Connection;
                                                     $res = mysqli_query($link->link, $query);
                                                     while ($row = $res->fetch_assoc()) { ?>
                                                         <tr>
@@ -148,9 +148,8 @@
 
     <?php if (isset($_POST['add'])) {
         include_once("../config/connection.php");
-        $link = new Connection;
         $query = "INSERT INTO khoa_hoc VALUES(NULL,'$_POST[name]','$_POST[description]')";
-        $res = mysqli_query($link->link, $query);
+        $res = mysqli_query($connect, $query);
         if ($res) {
     ?>
             <script>

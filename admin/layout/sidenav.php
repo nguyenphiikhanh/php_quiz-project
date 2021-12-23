@@ -21,7 +21,7 @@
                         <a href="course.php"> <i class="menu-icon fa fa-book"></i>Quản lí khóa học </a>
                     </li>
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-question-circle"></i>Thêm câu hỏi </a>
+                        <a href="question.php"> <i class="menu-icon fa fa-question-circle"></i>Quản lý câu hỏi </a>
                     </li>
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-history"></i>Lịch sử thi </a>

@@ -1,5 +1,5 @@
 <?php if (isset($_GET['course'])) {
-    include_once("../config/connection.php");
+    include_once("./config/connection.php");
     $link = new Connection;
     $query = "SELECT * FROM khoa_hoc WHERE id = '$_GET[course]' LIMIT 1";
     $res = mysqli_query($link->link, $query)->fetch_assoc();
@@ -76,9 +76,7 @@
                                                     <button type="submit" name="edit" class="btn btn-info btn-lg">
                                                         <i class="ti-check"></i> Sửa
                                                     </button>
-                                                    <button type="reset" class="btn btn-outline-secondary btn-lg ml-2">
-                                                        <i class="ti-back-left"></i> Nhập lại
-                                                    </button>
+
                                                 </div>
 
                                             </div>
