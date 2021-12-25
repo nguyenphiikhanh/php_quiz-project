@@ -88,10 +88,67 @@ if (isset($_GET['question'])) {
                                         </div>
                                     </div>
 
-                                    
+                                    <?php
+                                    if ($question['loai'] == "fill") { ?>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3"><label for="">Đáp án</label></div>
+                                            <div class="col-12 col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" value="<?php echo $question['dapan'] ?>" name="dapan" required placeholder="Nhập đáp án" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } elseif ($question['loai'] == "one") {
+                                        $options = unserialize($question['luachon']);
+                                        foreach ($options as $index => $option) { ?>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3"><label for="">Lựa chọn <?php echo $index + 1 ?></label></div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="input-group">
+                                                        <input type="text" value="<?php echo $option ?>" name="luachon[]" required placeholder="Nhập lựa chọn" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php  } ?>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3"><label for="">Đáp án</label></div>
+                                            <div class="col-12 col-md-9">
+                                                <div class="input-group">
+                                                    <input type="text" value="<?php echo $question['dapan'] ?>" name="dapan" required placeholder="Nhập đáp án" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } else {
+                                        $options = unserialize($question['luachon']);
+                                        $answers = unserialize($question['dapan']);
+                                        foreach ($options as $index => $option) { ?>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3"><label for="">Lựa chọn <?php echo $index + 1 ?></label></div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="input-group">
+                                                        <input type="text" value="<?php echo $option ?>" name="luachon[]" required placeholder="Nhập lựa chọn" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <?php  }
+                                        echo "<hr><strong>Đáp án</strong>";
+                                        foreach ($answers as $index => $answer) { ?>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3"><label for="">Đáp án <?php echo $index + 1 ?></label></div>
+                                                <div class="col-12 col-md-9">
+                                                    <div class="input-group">
+                                                        <input type="text" value="<?php echo $answer ?>" name="dapan[]" required placeholder="Nhập lựa chọn" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    <?php  }
+                                    } ?>
+
 
                                     <div class="card-footer row justify-content-center">
-                                        <button type="submit" name="add" class="btn btn-lg btn-info">
+                                        <button type="submit" name="save" class="btn btn-lg btn-info">
                                             <i class="ti-check"></i> Lưu lại
                                         </button>
                                     </div>
@@ -128,6 +185,43 @@ if (isset($_GET['question'])) {
         var editor = new FroalaEditor('#example')
     </script>
 
+<?php
+    if (isset($_POST['save'])) {
+        include_once("./config/connection.php");
+        $link = new Connection;
+        $options = null; // lua chon
+        $answers = '';
+        $type = $question['loai']; //loai cau hoi
+        if ($type == "one" || $type == "multi") {
+            $options = serialize($_POST['luachon']);
+        }
+
+        if ($type == "multi") {
+            $answers = serialize($_POST['dapan']);
+        } else $answers = $_POST['dapan'];
+
+
+
+        $query = "UPDATE cau_hoi SET noidung='$_POST[content]', mucdo='$_POST[level]', luachon='$options'
+        ,dapan='$answers' WHERE id = '$_GET[question]'";
+        mysqli_query($link->link, $query);
+
+         ?>
+            <script>
+                swal({
+                    title: "Sửa câu hỏi thành công!",
+                    text: "",
+                    icon: "success",
+                    button: "Đóng",
+                }).then((value)=>{
+                    window.location.href = window.location.href;
+                })
+            </script>
+    <?php
+        $link->close_connect();
+    }
+    ?>
+    
 
 </body>
 

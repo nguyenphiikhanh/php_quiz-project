@@ -234,7 +234,9 @@
         }
 
         if ($type == "multi") {
+            sort($_POST['dapan']);
             $answers = serialize($_POST['dapan']);
+            
         } else $answers = $_POST['dapan'];
 
 
