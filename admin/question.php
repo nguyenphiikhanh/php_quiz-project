@@ -1,7 +1,7 @@
 <?php
 include_once("./config/connection.php");
 $link = new Connection;
-$query = "SELECT * FROM cau_hoi";
+$query = "SELECT * FROM cau_hoi ORDER BY id DESC";
 $questions = mysqli_query($link->link, $query);
 ?>
 <!doctype html>
@@ -99,7 +99,7 @@ $questions = mysqli_query($link->link, $query);
                                                     <a href="./question-edit.php?question=<?php echo $question['id'] ?>" class="btn btn-warning btn-md test">
                                                         <i class="ti-pencil-alt"></i> Sửa
                                                     </a>
-                                                    <a href="" onclick="delete_course(event)" class="btn btn-outline-danger btn-md">
+                                                    <a href="./actions/question-delete.php?question=<?php echo $question['id'] ?>" onclick="delete_question(event)" class="btn btn-outline-danger btn-md">
                                                         <i class="ti-trash"></i> Xóa
                                                     </a>
                                                 </td>
@@ -108,12 +108,6 @@ $questions = mysqli_query($link->link, $query);
                                         ?>
 
 
-                                        <!-- <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>$327,900</td>
-                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -149,7 +143,32 @@ $questions = mysqli_query($link->link, $query);
     <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
     <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
 
+       <!-- sweetAlert -->
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script>
+        function delete_question(event){
+            event.preventDefault();
+
+            let link_redirect = event.currentTarget.getAttribute('href');
+            swal({
+                    title: "Bạn có chắc chắn muốn xóa câu hỏi này?",
+                    text: "Chú ý: hành động không thể hoàn tác!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        swal("Xóa câu hỏi thành công", {
+                            icon: "success",
+                        }).then((value) => {
+                            window.location.href = link_redirect;
+                        });
+                    }
+                });
+        }
+    </script>
 </body>
 
 </html>
