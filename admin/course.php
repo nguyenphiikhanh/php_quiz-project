@@ -67,7 +67,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <?php include_once("./config/connection.php");
-                                                    $query = "SELECT * FROM khoa_hoc ORDER BY id DESC";
+                                                    $query = "SELECT * FROM khoa_hoc";
                                                     $link = new Connection;
                                                     $res = mysqli_query($link->link, $query);
                                                     while ($row = $res->fetch_assoc()) { ?>
@@ -77,8 +77,8 @@
                                                                 <a href="./course-edit.php?course=<?php echo $row['id']; ?>" class="btn btn-warning btn-md test">
                                                                     <i class="ti-pencil-alt"></i> Chỉnh sửa
                                                                 </a>
-                                                                <a href="./actions/course-delete.php?course=<?php echo $row['id']; ?>" class="btn btn-outline-info btn-md">
-                                                                    <i class="ti-trash"></i> Tạo đề thi
+                                                                <a href="./exam.php?course=<?php echo $row['id']; ?>" class="btn btn-outline-info btn-md">
+                                                                    <i class="ti-book"></i> Danh sách đề thi
                                                                 </a>
                                                             </td>
                                                         </tr>
