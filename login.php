@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once("./middleware/logoutCheck.php");  //if user logined redirect to index page
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +46,12 @@ session_start();
                                 <div class="input-group-prepend border-right-0">
                                     <span class="input-group-text bg-white"><i class="fas fa-user-circle"></i></span>
                                 </div>
-                                <input value="<?php echo isset($_POST['username']) ? $_POST['username'] : "" ?>" type="text" class="form-control border-left-0" name="username" required placeholder="Tên đăng nhập">
+                                <input value="<?php if(isset($_POST['username'])){
+                                    echo $_POST['username'];
+                                }
+                                elseif(isset($_COOKIE['username'])){
+                                    echo $_COOKIE['username'];
+                                } else echo ""; ?>" type="text" class="form-control border-left-0" name="username" required placeholder="Tên đăng nhập">
                             </div>
 
                             <div class="input-group input-group-lg mb-3">
@@ -57,7 +63,7 @@ session_start();
 
                             <!-- Default switch -->
                             <div class="custom-control custom-switch mb-2">
-                                <input type="checkbox" name="remember" class="custom-control-input" id="switch1" name="example">
+                                <input type="checkbox" <?php echo isset($_COOKIE['username']) ? "checked" :"" ?> name="remember" value="remember" class="custom-control-input" id="switch1">
                                 <label class="custom-control-label" for="switch1"><small>Nhớ tên đăng nhập</small></label>
                             </div>
 
@@ -106,6 +112,9 @@ session_start();
                 $_SESSION['username'] = $res['username'];
                 $_SESSION['id'] = $res['id'];
                 $_SESSION['role'] = $res['role'];
+                if(isset($_POST['remember'])){
+                    setcookie('username',$_SESSION['username'],time()+(86400 * 30), "/");  //86400 = 1 day
+                } else setcookie('username',$_SESSION['username'],time()-3000, "/");
             ?>
                 <script>
                     window.location = "index.php";

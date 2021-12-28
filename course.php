@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+include_once("./middleware/loginCheck.php");  //if user doesn't login redirect to login page
 include "./config/connection.php";
 ?>
 <!DOCTYPE html>

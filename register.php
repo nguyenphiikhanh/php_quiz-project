@@ -1,4 +1,6 @@
 <?php
+session_start();
+include_once("./middleware/logoutCheck.php");  //if user logined redirect to index page
 include "./config/connection.php";
 ?>
 <!DOCTYPE html>
