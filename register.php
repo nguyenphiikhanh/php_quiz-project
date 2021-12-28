@@ -1,3 +1,6 @@
+<?php
+include "./config/connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +67,7 @@
                             <div class="form-group row  justify-content-center mb-3">
                                 <button type="submit" name="submit" class="btn btn-primary btn-lg">Đăng ký</button>
                             </div>
-                            <p class="text-center">hoặc <a href="dangnhap.php">đăng nhập tại đây</a> nếu bạn đã có tài khoản.</p>
+                            <p class="text-center">hoặc <a href="login.php">đăng nhập tại đây</a> nếu bạn đã có tài khoản.</p>
 
                         </form>
                     </div>
@@ -77,46 +80,53 @@
         </div>
 
         <?php
-        require_once('./config/connection.php');
+        if (isset($_POST['submit']))
+        {
+            $fullname="";
+            $email="";
+            $username="";
+            $password="";
+            $sql = "SELECT username FROM users;";
+            $do=mysqli_query($connect,$sql);
+            if($_POST['fullname']!=""&& $_POST['email']!=""&& $_POST['username']!="" && $_POST['password']!="")
+            {
+            $flag=true;
+            $fullname = $_POST['fullname'];
+            $email = $_POST['email'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            if(mysqli_num_rows($do)>0)
+            {
+                while ($row = mysqli_fetch_assoc($do))
+                {
+                    if($username==$row["username"])
+                {
+                    $flag=false;
+                    $kq="Tên đăng nhập đã tồn tại!";
+                }
+                }
+            }
+            if($flag==true)
+            {
+             $sql="INSERT INTO users VALUES(NULL, '$username', '$fullname','$email','$password',DEFAULT)";
 
-        if (isset($_POST['submit'])) {
-            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-            $count = 0;
-            $query = "SELECT * FROM users WHERE username = '$_POST[username]'";
-            $res = mysqli_query($connect, $query);
-            $count = mysqli_num_rows($res);
-            if ($count > 0) { ?>
-                <script>
-                    document.getElementById("fail").style.display = "block";
-                    document.getElementById("success").style.display = "none";
-                    document.title = "Đăng ký thành viên"
-                </script>
-            <?php } else {
-                $query = "INSERT INTO users VALUES(NULL,'$_POST[username]','$_POST[fullname]','$_POST[email]','$password',DEFAULT)";
-                mysqli_query($connect, $query);
-            ?>
-                <script>
-                    document.getElementById("fail").style.display = "none";
-                    document.getElementById("success").style.display = "block";
-                    document.title = "Đăng ký thành viên"
-                    setTimeout("location.href = 'login.php';", 2000);
-                </script>
-        <?php
+                if ($connect->query($sql) == TRUE) 
+              {
+              echo "Đăng ký thành công";
+              }
+            }
+            else{
+             echo "Tên đăng nhập đã tồn tại!";
             }
         }
+
+    }
         ?>
-
-
     </div>
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- font awesome icon -->
     <script src="./js/fontAwesome.js"></script>
-
 </body>
-
 </html>

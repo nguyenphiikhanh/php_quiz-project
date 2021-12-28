@@ -25,22 +25,20 @@ include "./config/connection.php";
   <?php include_once("./layout/header.php") ?>
 
   <main role="main" class="container mt-5">
-    <div class="row justify-content-center">
+      <div class="row justify-content-center">
       <?php
-      $sql = "SELECT * FROM khoa_hoc";
+      $sql = "SELECT * FROM de_thi WHERE khoa_hoc = '$_GET[course]'";
       $do = mysqli_query($connect, $sql);
       while ($row = mysqli_fetch_assoc($do)) { ?>
-        <div class="card col-md-4 mr-3">
-          <img class="card-img-top" src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png" alt="Card image cap">
+        <div class="card col-md-5 mr-3 mt-3">
           <div class="card-body">
-            <h5 class="card-title"><?php echo $row['name'] ?></h5>
-            <p class="card-text"><?php echo $row['description'] ?></p>
-            <a href="./course.php?course=<?php echo $row['id']?>" class="btn btn-primary">Vào học</a>
+            <h5 class="card-title"><?php echo $row['ten_de_thi'] ?></h5>
+            <a href="./course.php?course=" class="btn btn-primary">Làm bài thi</a>
           </div>
         </div>
       <?php }
       ?>
-    </div>
+      </div>
   </main>
   <!-- footer -->
   <?php include_once("./layout/footer.php") ?>

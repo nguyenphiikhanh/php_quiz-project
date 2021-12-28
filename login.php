@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +67,7 @@
                             <p class="text-center mb-2">hoặc</p>
 
                             <div class="form-group row justify-content-center mb-3">
-                                <a href="dangky.php" class="btn btn-outline-secondary btn-lg">Đăng ký tài khoản</a>
+                                <a href="register.php" class="btn btn-outline-secondary btn-lg">Đăng ký tài khoản</a>
                             </div>
                         </form>
                     </div>
@@ -78,7 +82,6 @@
 
         if (isset($_POST['login'])) {
             $password = $_POST['password'];
-
             $count = 0;
             $query = "SELECT * FROM users WHERE username ='$_POST[username]' LIMIT 1";
             $res = mysqli_query($connect, $query);
@@ -93,13 +96,16 @@
                     document.title = "Đăng nhập";
                 </script>
             <?php
-            } elseif ($count > 0 && !password_verify($password, $res['password'])) { ?>
+            } elseif ($count > 0 && $password != $res['password']) { ?>
                 <script>
                     document.getElementById("pass_fail").style.display = "block";
                 </script>
             <?php
 
             } else {
+                $_SESSION['username'] = $res['username'];
+                $_SESSION['id'] = $res['id'];
+                $_SESSION['role'] = $res['role'];
             ?>
                 <script>
                     window.location = "index.php";

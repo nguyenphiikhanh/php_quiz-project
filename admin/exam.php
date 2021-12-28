@@ -121,7 +121,6 @@ $exams = mysqli_query($link->link, $query);
                                         <tr>
                                             <th>Mã đề thi</th>
                                             <th>Tên</th>
-                                            <th>Khóa học</th>
                                             <th>Câu hỏi cơ bản</th>
                                             <th>Câu hỏi trung bình</th>
                                             <th>Câu hỏi nâng cao</th>
@@ -134,7 +133,6 @@ $exams = mysqli_query($link->link, $query);
                                             <tr>
                                                 <td><?php echo $exam['ma_de_thi'] ?></td>
                                                 <td><?php echo $exam['ten_de_thi'] ?></td>
-                                                <td><?php echo $exam['name'] ?></td>
                                                 <td><?php echo $exam['cau_hoi_coban'] ?></td>
                                                 <td><?php echo $exam['cau_hoi_trungbinh'] ?></td>
                                                 <td><?php echo $exam['cau_hoi_nangcao'] ?></td>
