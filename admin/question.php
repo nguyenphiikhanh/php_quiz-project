@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){   //checl login
+    header("location: login.php");
+}
+
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
+    header("location: ../index.php");
+}
 include_once("./config/connection.php");
 $link = new Connection;
 $query = "SELECT * FROM cau_hoi ORDER BY id DESC";

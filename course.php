@@ -28,13 +28,14 @@ include "./config/connection.php";
   <main role="main" class="container mt-5">
       <div class="row justify-content-center">
       <?php
+      setcookie("course",$_GET['course'],time()+36000);
       $sql = "SELECT * FROM de_thi WHERE khoa_hoc = '$_GET[course]'";
       $do = mysqli_query($connect, $sql);
       while ($row = mysqli_fetch_assoc($do)) { ?>
         <div class="card col-md-5 mr-3 mt-3">
           <div class="card-body">
             <h5 class="card-title"><?php echo $row['ten_de_thi'] ?></h5>
-            <a href="./course.php?course=" class="btn btn-primary">Làm bài thi</a>
+            <a href="./doExam.php?exam=<?php echo $row['ma_de_thi']?>" class="btn btn-primary">Làm bài thi</a>
           </div>
         </div>
       <?php }

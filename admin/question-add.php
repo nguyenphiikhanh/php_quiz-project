@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['username'])){   //checl login
+    header("location: login.php");
+}
+
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
+    header("location: ../index.php");
+}
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
