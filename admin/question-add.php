@@ -230,6 +230,7 @@
         $answers = '';
         $type = $_POST['type']; //loai cau hoi
         if ($type == "one" || $type == "multi") {
+            sort($_POST['luachon']);
             $options = serialize($_POST['luachon']);
         }
 
