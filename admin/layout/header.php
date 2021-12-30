@@ -15,11 +15,9 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link hover-dark" href="#"><i class="fa fa-user"></i> Sửa thông tin</a>
 
                             <a class="nav-link hover-dark" href="../index.php"><i class="fa fa-cog"></i> Quay lại trang học tập</a>
 
-                            <a class="nav-link hover-dark" href="#"><i class="fa fa-power-off"></i> Đăng xuất</a>
                         </div>
                     </div>
 

@@ -42,7 +42,7 @@ include "./config/connection.php";
 	<?php
 	$sql="SELECT * FROM ket_qua LEFT OUTER JOIN khoa_hoc ON ket_qua.khoa_hoc = khoa_hoc.id
 	LEFT OUTER JOIN de_thi ON  ket_qua.de_thi = de_thi.ma_de_thi
-	 WHERE `username`='$_SESSION[username]';";
+	 WHERE `username`='$_SESSION[username]' ORDER BY ngay DESC;";
     $do=mysqli_query($connect,$sql);
     if(mysqli_num_rows($do)>0)
     {

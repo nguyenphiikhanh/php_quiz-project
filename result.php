@@ -26,7 +26,7 @@ include "./config/connection.php"
       <?php
       $diem = 0;
       if (isset($_POST['nop'])) {
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 20; $i++) {
           $id = $_POST['id' . $i];
           $sql = "SELECT `dapan`,`loai` FROM cau_hoi WHERE `id`= $id;";
           $do = mysqli_query($connect, $sql);
@@ -59,7 +59,10 @@ include "./config/connection.php"
               <strong>Điểm bài làm của bạn: <?php echo $diem ?></strong>
             </div>
           </div>
-      <?php } else {
+      <?php 
+    setcookie('course','',time()-3600);
+    setcookie("exam",'',time()-3600);  
+    } else {
           echo "Đã xảy ra lỗi!";
         }
       }

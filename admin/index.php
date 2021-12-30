@@ -1,12 +1,14 @@
-<?php 
+<?php
 session_start();
-if(!isset($_SESSION['username'])){   //checl login
+if (!isset($_SESSION['username'])) {   //checl login
     header("location: login.php");
 }
 
-if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {  // check role
     header("location: ../index.php");
 }
+include_once("./config/connection.php");
+$link = new Connection;
 ?>
 
 <!doctype html>
@@ -69,7 +71,10 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
                                             <div class="stat-icon dib"><i class="ti-user text-success border-success"></i></div>
                                             <div class="stat-content dib">
                                                 <div class="stat-text">Tổng số thành viên</div>
-                                                <div class="stat-digit">1,012</div>
+                                                <div class="stat-digit"><?php
+                                                                        $users = mysqli_query($link->link, "SELECT * FROM users");
+                                                                        echo mysqli_num_rows($users);
+                                                                        ?></div>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +89,10 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
                                             <div class="stat-icon dib"><i class="ti-agenda text-warning border-warning"></i></div>
                                             <div class="stat-content dib">
                                                 <div class="stat-text">Khóa học</div>
-                                                <div class="stat-digit">770</div>
+                                                <div class="stat-digit"><?php
+                                                                        $courses = mysqli_query($link->link, "SELECT * FROM khoa_hoc");
+                                                                        echo mysqli_num_rows($courses);
+                                                                        ?></div>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +106,10 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
                                             <div class="stat-icon dib"><i class="ti-help-alt text-danger border-danger"></i></div>
                                             <div class="stat-content dib">
                                                 <div class="stat-text">Tổng số câu hỏi</div>
-                                                <div class="stat-digit">2,781</div>
+                                                <div class="stat-digit"><?php
+                                                                        $questions = mysqli_query($link->link, "SELECT * FROM cau_hoi");
+                                                                        echo mysqli_num_rows($questions);
+                                                                        ?></div>
                                             </div>
                                         </div>
                                     </div>
@@ -106,47 +117,6 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <strong class="card-title">Kết quả cao</strong>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">#</th>
-                                                    <th scope="col">Khóa học</th>
-                                                    <th scope="col">Thành viên</th>
-                                                    <th scope="col">Kết quả</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div><!-- .animated -->

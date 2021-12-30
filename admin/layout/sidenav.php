@@ -27,10 +27,10 @@
                         <a href="./exam-history.php"> <i class="menu-icon fa fa-history"></i>Lịch sử thi </a>
                     </li>
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-list-alt"></i>Danh sách học viên </a>
+                        <a href="./student.php"> <i class="menu-icon fa fa-list-alt"></i>Danh sách học viên </a>
                     </li>
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-power-off"></i>Đăng xuất </a>
+                        <a href="../logout.php"> <i class="menu-icon fa fa-power-off"></i>Đăng xuất </a>
                     </li>
 
 
@@ -40,3 +40,6 @@
     </aside>
 
     <!-- Left Panel -->
+
+
+
