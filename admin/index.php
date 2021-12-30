@@ -76,19 +76,6 @@ if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){  // check role
                                 </div>
                             </div>
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="stat-widget-one">
-                                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                                            <div class="stat-content dib">
-                                                <div class="stat-text">Thành viên mới</div>
-                                                <div class="stat-digit">961</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-lg-3 col-md-6">
                                 <div class="card">

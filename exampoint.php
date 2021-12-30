@@ -32,7 +32,7 @@ include "./config/connection.php";
 	<table class="table">
 	<thead>
 		<tr>
-		<th>Tên người thi</th>
+		<th>Người thi</th>
 		<th>Khóa học</th>
 		<th>Đề thi</th>
 		<th>Điểm</th>

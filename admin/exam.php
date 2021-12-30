@@ -83,17 +83,17 @@ $exams = mysqli_query($link->link, $query);
 
                             <div class="form-group">
                                 <label for="">Câu hỏi cơ bản</label>
-                                <input class="form-control" min="1" name="coban" required type="number">
+                                <input class="form-control" min="2" name="coban" required type="number">
                             </div>
 
                             <div class="form-group">
                                 <label for="">Câu hỏi trung bình</label>
-                                <input class="form-control" min="1" name="trungbinh" required type="number">
+                                <input class="form-control" min="2" name="trungbinh" required type="number">
                             </div>
 
                             <div class="form-group">
                                 <label for="">Câu hỏi nâng cao</label>
-                                <input class="form-control" min="1" name="nangcao" required type="number">
+                                <input class="form-control" min="2" name="nangcao" required type="number">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -147,10 +147,10 @@ $exams = mysqli_query($link->link, $query);
                                                 <td><?php echo $exam['cau_hoi_trungbinh'] ?></td>
                                                 <td><?php echo $exam['cau_hoi_nangcao'] ?></td>
                                                 <td>
-                                                    <a href="./exam-edit.php?exam=<?php echo $exam['id'] ?>" class="btn btn-warning btn-md test">
+                                                    <a href="./exam-edit.php?exam=<?php echo $exam['ma_de_thi'] ?>" class="btn btn-warning btn-md test">
                                                         <i class="ti-pencil-alt"></i> Sửa
                                                     </a>
-                                                    <a href="./actions/exam-delete.php?exam=<?php echo $exam['id'] ?>" onclick="delete_question(event)" class="btn btn-outline-danger btn-md">
+                                                    <a href="./actions/exam-delete.php?exam=<?php echo $exam['ma_de_thi'] ?>" onclick="delete_exam(event)" class="btn btn-outline-danger btn-md">
                                                         <i class="ti-trash"></i> Xóa
                                                     </a>
                                                 </td>
@@ -198,12 +198,12 @@ $exams = mysqli_query($link->link, $query);
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-        function delete_question(event) {
+        function delete_exam(event) {
             event.preventDefault();
 
             let link_redirect = event.currentTarget.getAttribute('href');
             swal({
-                    title: "Bạn có chắc chắn muốn xóa câu hỏi này?",
+                    title: "Bạn có chắc chắn muốn xóa đề thi này?",
                     text: "Chú ý: hành động không thể hoàn tác!",
                     icon: "warning",
                     buttons: true,
@@ -211,9 +211,9 @@ $exams = mysqli_query($link->link, $query);
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        swal("Xóa câu hỏi thành công", {
+                        swal("Đã xóa đề thi", {
                             icon: "success",
-                        }).then((value) => {
+                        }).then((ok) => {
                             window.location.href = link_redirect;
                         });
                     }
@@ -231,7 +231,7 @@ $exams = mysqli_query($link->link, $query);
         <script>
             swal({
                 title: "Thành công!",
-                text: "Đã thêm câu hỏi!",
+                text: "Đã thêm đề thi mới!",
                 icon: "success",
                 button: "Đóng",
             }).then((close)=>{

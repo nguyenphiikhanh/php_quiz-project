@@ -1,6 +1,6 @@
 <?php
-
-if(!isset($_SESSION['username'])){   //checl login
+session_start();
+if(!isset($_SESSION['username'])){   //check login
     header("location: login.php");
 }
 

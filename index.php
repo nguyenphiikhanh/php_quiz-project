@@ -31,7 +31,7 @@ include "./config/connection.php";
       $sql = "SELECT * FROM khoa_hoc";
       $do = mysqli_query($connect, $sql);
       while ($row = mysqli_fetch_assoc($do)) { ?>
-        <div class="card col-md-4 mr-3">
+        <div class="card col-md-4 mr-3 mt-4">
           <img class="card-img-top" src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><?php echo $row['name'] ?></h5>
