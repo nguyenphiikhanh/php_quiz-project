@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("./middleware/loginCheck.php");  //if user doesn't login redirect to login page
+// include_once("./middleware/loginCheck.php");  //if user doesn't login redirect to login page
 include "./config/connection.php";
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,9 @@ include "./config/connection.php";
 
 <body>
   <!-- header -->
-  <?php include_once("./layout/header.php") ?>
+  <?php if(isset($_SESSION['username'])){
+    include_once("./layout/header.php");
+  } ?>
 
   <main role="main" class="container mt-5">
     <div class="row justify-content-center">

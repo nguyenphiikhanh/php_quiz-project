@@ -109,7 +109,7 @@ for ($i=0; $i <count($har_rand) ; $i++) {
           {
         ?>
         <input type="hidden" name="<?php echo "id".$i?>" value="<?php echo $ques_final[$i]->id; ?>">
-        <tr><td><?php echo "Câu ".($i+1).": ". $ques_final[$i]->noidung; ?></td></tr>
+        <tr><td><?php echo "<strong>Câu ".($i+1).":</strong> ". $ques_final[$i]->noidung; ?></td></tr>
         <?php
             for ($j=0; $j <count($ques_final[$i]->luachon) ; $j++) 
             {
@@ -122,7 +122,7 @@ for ($i=0; $i <count($har_rand) ; $i++) {
           {
               ?>
           <input type="hidden" name="<?php echo "id".$i?>" value="<?php echo $ques_final[$i]->id; ?>">
-          <tr><td><?php echo $ques_final[$i]->noidung; ?></td></tr>
+          <tr><td><?php echo "<strong>Câu ".($i+1).":</strong> ".$ques_final[$i]->noidung; ?></td></tr>
           <?php
              for ($j=0; $j<count($ques_final[$i]->luachon) ; $j++) 
              { 
@@ -135,7 +135,7 @@ for ($i=0; $i <count($har_rand) ; $i++) {
           {
            ?>
            <input type="hidden" name="<?php echo "id".$i?>" value="<?php echo $ques_final[$i]->id; ?>">
-           <tr><td><?php echo $ques_final[$i]->noidung; ?></td></tr>
+           <tr><td><?php echo "<strong>Câu ".($i+1).":</strong> ".$ques_final[$i]->noidung; ?></td></tr>
            <tr><td><input type="text" name="<?php echo "ans_user".$i;?>"></td></tr>
            <?php
           }

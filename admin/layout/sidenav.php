@@ -24,7 +24,7 @@
                         <a href="question.php"> <i class="menu-icon fa fa-question-circle"></i>Quản lý câu hỏi </a>
                     </li>
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-history"></i>Lịch sử thi </a>
+                        <a href="./exam-history.php"> <i class="menu-icon fa fa-history"></i>Lịch sử thi </a>
                     </li>
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-list-alt"></i>Danh sách học viên </a>
